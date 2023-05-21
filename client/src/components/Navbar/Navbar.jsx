@@ -3,6 +3,8 @@ import './Navbar.css';
 import logo from './spaceX logo.png';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import toast from 'react-hot-toast';
+
 const Navbar = () => {
     const [visible, setVisible] = useState('');
     const {auth, setAuth} = useAuth();
@@ -10,6 +12,7 @@ const Navbar = () => {
     const handleLogout = () => {
         setAuth({...auth, token: ""});
         localStorage.removeItem('auth-token');
+        toast.success('Logged out successfully!')
     }
 
     const [navOpen, setNavOpen] = useState(false)
