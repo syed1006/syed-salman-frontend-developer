@@ -1,3 +1,17 @@
+.form-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.form-container > h2{
+    font-weight: 400;
+    font-size: 2rem;
+}
+
 .cards-container{
     height: 100vh;
 }
