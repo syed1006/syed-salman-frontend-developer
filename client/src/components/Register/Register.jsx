@@ -2,6 +2,7 @@ import { useState } from "react";
 import './Register.css';
 import { Link, useNavigate } from "react-router-dom";
 import logo from '../Navbar/spaceX logo.png';
+import toast from 'react-hot-toast';
 
 const Register = () => {
     const [data, setData] = useState({
@@ -13,6 +14,7 @@ const Register = () => {
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
+        toast.loading('Loading...')
         e.preventDefault();
         let url = 'http://localhost:5000/user/register';
         try {
@@ -28,13 +30,17 @@ const Register = () => {
                     password: data.password
                 })
             })
-            const result = await res.json()
-            console.log(result);
+            const result = await res.json();
+            toast.dismiss()
             if (result.status === 'success') {
+                toast.success(result.message);
                 navigate('/login');
+            }else{
+                toast.error(result.message);
             }
         } catch (error) {
-            console.log(error)
+            console.log(error);
+            toast.error('Something went wrong, try again later');
         }
     }
     return (

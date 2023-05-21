@@ -2,7 +2,8 @@ import { useState } from "react";
 import './Login.css';
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import logo from '../Navbar/spaceX logo.png'
+import logo from '../Navbar/spaceX logo.png';
+import toast from 'react-hot-toast';
 
 const Login = () => {
     const [data, setData] = useState({
@@ -16,9 +17,9 @@ const Login = () => {
 
     const handleSubmit = async (e)=>{
         e.preventDefault();
+        toast.loading('Loading...');
         let url = 'http://localhost:5000/user/login';
         try {
-            console.log(data.email)
             const res = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -31,13 +32,18 @@ const Login = () => {
                 })
             })
             const result = await res.json()
+            toast.dismiss();
             if(result.status === 'success'){
+                toast.success(result.message)
                 localStorage.setItem('auth-token', result.token)
                 setAuth({...auth, token: result.token});
                 navigate('/');
+            }else{
+                toast.error(result.message)
             }
         } catch (error) {
             console.log(error)
+            toast.error('Something went wrong, try again later');
         }
     }
     return (
