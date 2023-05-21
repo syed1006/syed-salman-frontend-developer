@@ -1,0 +1,37 @@
+.search-form{
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.input-container{
+    width: 50%;
+    min-width: 300px;
+    padding: 20px;
+}
+
+.input-container > input,
+.input-container > select{
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    width: 90%;
+    border: 2px solid #aaa;
+}
+
+input[type=submit]{
+    background-color: #111;
+    color: #fff;
+    border: none;
+}
+
+input[type=submit]:hover{
+    opacity: 0.7;
+}
+
+input[type=submit]:active{
+    transform: scale(0.98);
+}
