@@ -1,18 +1,18 @@
-import { useState } from "react";
 import './SearchForm.css';
 
-const SearchForm = ({handleSubmit})=>{
-    const [data, setData] = useState({
-        capsule_id: "",
-        status: "",
-        details: ""
-    })
+const SearchForm = ({fetchData, setData, data})=>{
+
+    function handleSubmit(e){
+        e.preventDefault()
+        setData({...data, search: true, page: 1});
+        fetchData();
+    }
     return(
-        <form className="search-form" onSubmit={()=>handleSubmit(data)}>
+        <form className="search-form" onSubmit={handleSubmit}>
             <div className="input-container">
                 <select
                     onChange={(e)=>setData({...data, capsule_id: e.target.value})}
-                    required
+                    value={data.capsule_id}
                 >   
                     <option value="">Select a option</option>
                     <option value="dragon1">Dragon 1</option>
@@ -22,7 +22,7 @@ const SearchForm = ({handleSubmit})=>{
             <div className="input-container">
                 <select
                     onChange={(e)=>setData({...data, status: e.target.value})}
-                    required
+                    value={data.status}
                 >
                     <option value="">Select a option</option>
                     <option value="unknown">Unknown</option>
@@ -35,8 +35,8 @@ const SearchForm = ({handleSubmit})=>{
                 <input type="text"
                     onChange={(e)=>setData({...data, details: e.target.value})}
                     placeholder="Enter any details"
-                    required
                     autoComplete="off"
+                    value={data.details}
                 />
             </div>
             <div className="input-container">

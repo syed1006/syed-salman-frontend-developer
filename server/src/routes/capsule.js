@@ -23,7 +23,7 @@ router.post('/load-data', async(req, res)=>{
 //Route: 2 to get all the capsules with search functionality
 router.get('/', fetchUser, async(req, res)=>{
     try {
-        const {search = false, capsule_id, status, details} = req.query;
+        const {search = false, capsule_id, status, details, page=1, limit=5} = req.query;
         let data;
         let conditions = [];
         if(search){
@@ -40,9 +40,9 @@ router.get('/', fetchUser, async(req, res)=>{
         }
         //check if we have any condition
         if(conditions.length > 0){
-            data = await Capsule.find({$and: conditions});
+            data = await Capsule.find({$and: conditions}).skip((page - 1) * limit).limit(limit);
         }else{
-            data = await Capsule.find();
+            data = await Capsule.find().skip((page - 1) * limit).limit(limit);
         }
         return res.status(200).json({
             status: 'success',

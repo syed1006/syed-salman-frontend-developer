@@ -1,0 +1,49 @@
+.card{
+    width: 200px;
+    border: 2px solid #ababab;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    position: relative;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.card>h3{
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
+.status{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-weight: bold;
+    color: #aaa;
+    padding: 5px;
+    border-radius: 0 5px 0 5px;
+}
+
+.status.active{
+    background-color: #38E54D;
+    color: #1C6758;
+}
+
+.status.unknown{
+    background-color: #62CDFF;
+    color: #2F58CD;
+}
+
+.status.retired{
+    background-color: #444;
+    color: #fafafa;
+}
+
+.status.destroyed{
+    background-color: #FF6969;
+    color: #89375F;
+}

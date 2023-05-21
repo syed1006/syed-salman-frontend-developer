@@ -8,8 +8,9 @@
     height: 70px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.2);
     position: fixed;
     top: 0;
     left: 0;
@@ -102,14 +103,54 @@
     margin: 20px;
 }
 
-.list li a{
+.list li a, .logout{
     text-decoration: none;
     text-transform: uppercase;
     color: rgb(34, 31, 31);
     font-size: 14px;
+    cursor: pointer;
+}
+
+.list li a:hover, .logout:hover{
+    text-decoration: underline;
 }
 
 .list ul{
     list-style-type: none;
     padding: 0;
+}
+
+.main-nav{
+    list-style: none;
+    display: flex;
+}
+
+.main-nav > li{
+    padding: 0 20px;
+}
+
+.main-nav > li > a, .logout{
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fafafa;
+}
+
+.main-nav > li > a:hover, .logout:hover{
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 700px) {
+    .main-nav{
+        list-style: none;
+        display: block;
+    }
+    
+    .main-nav > li{
+        padding: 0 ;
+    }
+    
+    .main-nav > li > a, .logout{
+        text-decoration: none;
+        color: rgb(34, 31, 31);
+    }
 }

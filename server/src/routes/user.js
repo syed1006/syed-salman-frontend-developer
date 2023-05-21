@@ -45,6 +45,7 @@ router.post('/login', async(req, res)=>{
 
     try {
         const {email, password} = req.body
+        console.log(email, password)
         const user = await User.findOne({email});
         if(!user){
             return res.status(400).json({
@@ -70,8 +71,7 @@ router.post('/login', async(req, res)=>{
         return res.status(200).json({
             status: 'success',
             message: 'successfully logged in.',
-            token,
-            user
+            token
         })
     } catch (error) {
         return res.status(500).json({

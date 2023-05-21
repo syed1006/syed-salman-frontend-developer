@@ -1,0 +1,17 @@
+.pop-up{
+    background-color: #fff;
+    padding: 40px;
+    max-width: 800px;
+    width: 100%;
+}
+
+.pop-up > ul{
+    margin: 20px 0;
+    text-align: left;
+}
+
+.pop-up > ul > li >span:first-child{
+    display: inline-block;
+    width: 30%;
+    min-width: 100px;
+}
